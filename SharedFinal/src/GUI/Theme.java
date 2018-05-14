@@ -2,7 +2,7 @@ package GUI;
 
 import java.awt.Color;
 
-enum Theme{
+public enum Theme{
 	TITLE(0x000000,0xDDDDDD,20),
 	BODY(0x222222,0xFFFFFF,12);
 	Color backgroundColor;
