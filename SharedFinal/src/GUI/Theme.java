@@ -3,8 +3,9 @@ package GUI;
 import java.awt.Color;
 
 public enum Theme{
-	TITLE(0x000000,0xDDDDDD,20),
-	BODY(0x222222,0xFFFFFF,12);
+	TITLE(0x444444,0xDDDDDD,20),
+	BODY(0x222222,0xFFFFFF,12),
+	BUTTONS(0x000000,0xCCCCCC,12);
 	Color backgroundColor;
 	Color textColor;
 	int fontSize;
