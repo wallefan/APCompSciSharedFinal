@@ -11,7 +11,7 @@ public class Attraction {
 	 private double thrillRating;
 	 private String name;
 	 public Attraction(String name){
-		this.name=name; 
+		this.name=name;
 	 }
 	 public String getName() {
 		 return this.name;

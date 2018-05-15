@@ -33,10 +33,7 @@ public abstract class View {// TODO getters and setters I guess
 		view.setLayout(layout);
 		// setup other panels
 		header = new JPanel();
-		title = new JLabel();
-		title.setBackground(Theme.TITLE.backgroundColor);
-		title.setFont(title.getFont().deriveFont((float) Theme.TITLE.fontSize));// ugly code to set font size
-		title.setForeground(Theme.TITLE.textColor);
+		title = Theme.TITLE.makeLabel();
 		header.add(title);
 		footer = new JPanel();
 		content = new JPanel();
