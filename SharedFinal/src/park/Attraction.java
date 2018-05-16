@@ -23,4 +23,8 @@ public class Attraction {
 	 public String getName() {
 		 return this.name;
 	 }
+	 
+	 public Map<String, Object> getAttributes() {
+		 return attributes;
+	 }
 }
