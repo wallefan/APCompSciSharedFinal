@@ -6,6 +6,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gui.theme.Themes;
+
 public abstract class View {// TODO getters and setters I guess
 	/**
 	 * main panel containing entire view
@@ -35,7 +37,8 @@ public abstract class View {// TODO getters and setters I guess
 		view.setLayout(layout);
 		// setup other panels
 		header = new JPanel();
-		title = Theme.TITLE.makeLabel();
+		title = new JLabel();
+		Themes.title.style(title);
 		header.add(title);
 		footer = new JPanel();
 		body = new JPanel();

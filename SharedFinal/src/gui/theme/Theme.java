@@ -1,7 +1,7 @@
 package gui.theme;
 
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.Component;
 
 import javax.swing.JComponent;
 import javax.swing.border.AbstractBorder;
@@ -9,27 +9,31 @@ import javax.swing.border.EmptyBorder;
 
 public abstract class Theme {
 	// text
-	protected static double fontSize = 12;
-	protected static Color textColor = Color.BLACK;
-	protected static Font font = new Font(null, 0, 0);
+	protected float fontSize = 12;
+	protected Color textColor = Color.BLACK;
 	// background
-	protected static Color backgroundColor = Color.WHITE;
-	protected static boolean opaque = false;
+	protected Color backgroundColor = Color.WHITE;
+	protected boolean opaque = false;
 	// border
-	protected static AbstractBorder border = new EmptyBorder(0, 0, 0, 0);
-	protected static Color borderColor = Color.BLACK;
-	
-	public static void style(JComponent component) {
+	protected AbstractBorder border = new EmptyBorder(0, 0, 0, 0);
+	protected Color borderColor = Color.BLACK;
+	//layout
+	protected float alignmentY = Component.CENTER_ALIGNMENT;
+	protected float alignmentX = Component.LEFT_ALIGNMENT;
+
+	public void style(JComponent component) {
 		component.setOpaque(opaque);
 		component.setBorder(border);
-		component.setFont(font);
 		component.setBackground(backgroundColor);
-		// component.setFont(label.getFont().deriveFont((float) this.fontSize));// ugly
-		// code to set font size
-		// component.setForeground(this.textColor);
+		component.setForeground(textColor);
+		component.setFont(component.getFont().deriveFont(fontSize));// ugly
+		component.setAlignmentX(alignmentX);
+		component.setAlignmentY(alignmentY);
 	}
-
-	private Theme() {// Java adds an implicit public constructor to every class which does not define
-						// at least one explicitly
+	
+	Theme(){
+		jank();
 	}
+	
+	abstract void jank();
 }

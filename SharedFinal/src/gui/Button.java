@@ -1,12 +1,12 @@
 package gui;
 
-import java.awt.Window.Type;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
-import javax.swing.JPanel;
+
+import gui.theme.Themes;
 
 abstract class Button implements MouseListener {
 	private String label;
@@ -17,8 +17,7 @@ abstract class Button implements MouseListener {
 		button = new JButton(label);
 		button.addMouseListener(this);
 		button.setToolTipText(hovertext);
-		button.setBackground(Theme.BUTTONS.backgroundColor);
-		button.setForeground(Theme.BUTTONS.textColor);
+		Themes.button.style(button);
 	}
 
 	abstract void onClick();
