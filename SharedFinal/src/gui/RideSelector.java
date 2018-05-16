@@ -12,12 +12,11 @@ public class RideSelector extends View {
 	}
 	
 	public void addRide(Attraction ride) {
-		View me = this;
 		Button button = new Button(ride.getName(),"") {
 			@Override
 			void onClick() {
 				RideDetails thisRide = new RideDetails(ride);
-				thisRide.setPrevView(me);
+				thisRide.setPrevView(RideSelector.this);
 				MasterWindow.setView(thisRide);
 			}
 		};
