@@ -20,4 +20,10 @@ public class Themes {
 			
 		}
 	};
+	public static Theme body = new Theme() {
+		@Override
+		void jank() {
+			
+		}
+	};
 }
