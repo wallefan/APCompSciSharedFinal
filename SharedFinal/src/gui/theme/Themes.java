@@ -6,7 +6,7 @@ public class Themes {
 	public static Theme title = new Theme() {
 		@Override
 		void jank() {
-			this.backgroundColor=Color.RED;
+			backgroundColor=Color.RED;
 		}
 	};
 	public static Theme button = new Theme() {
