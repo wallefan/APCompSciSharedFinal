@@ -20,7 +20,7 @@ public abstract class View {// TODO getters and setters I guess
 	/**
 	 * primary panel for content, put everything in here.
 	 */
-	protected JPanel content;
+	protected JPanel body;
 	protected JPanel footer;
 	protected JLabel title;
 	private BorderLayout layout;
@@ -38,10 +38,10 @@ public abstract class View {// TODO getters and setters I guess
 		title = Theme.TITLE.makeLabel();
 		header.add(title);
 		footer = new JPanel();
-		content = new JPanel();
+		body = new JPanel();
 		// put other panels in view
 		view.add(header, BorderLayout.PAGE_START);// put header at the top of view
-		view.add(content, BorderLayout.CENTER);// put content in the middle of view
+		view.add(body, BorderLayout.CENTER);// put content in the middle of view
 		view.add(footer,BorderLayout.PAGE_END);// put footer at bottom of view
 		init();
 	}
@@ -52,12 +52,13 @@ public abstract class View {// TODO getters and setters I guess
 	}
 	
 	public void setPrevView(View target) {
-		Button goBack = new Button("Back","",footer) {
+		Button goBack = new Button("Back","") {
 			@Override
 			void onClick() {
 				MasterWindow.setView(target);
 			}
 		};
+		footer.add(goBack.getButton());
 	}
 
 	/**

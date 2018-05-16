@@ -13,13 +13,12 @@ abstract class Button implements MouseListener {
 	private String hovertext;
 	private AbstractButton button; // might write in toggle buttons
 
-	Button(String label, String hovertext, JPanel target) {
+	Button(String label, String hovertext) {
 		button = new JButton(label);
 		button.addMouseListener(this);
 		button.setToolTipText(hovertext);
 		button.setBackground(Theme.BUTTONS.backgroundColor);
 		button.setForeground(Theme.BUTTONS.textColor);
-		target.add(button);
 	}
 
 	abstract void onClick();
