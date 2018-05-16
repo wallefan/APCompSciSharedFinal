@@ -1,19 +1,23 @@
 package gui.theme;
 
-import java.awt.Color;
+import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.metal.MetalBorders;
 
 public class Themes {
 	public static Theme title = new Theme() {
 		@Override
 		void jank() {
-			backgroundColor=Color.RED;
+			fontSize=20;
+			int padding = 10;
+			border=new EmptyBorder(padding,padding,padding,padding);
 		}
 	};
 	public static Theme button = new Theme() {
 		@Override
 		void jank() {
 			opaque=true;
-			backgroundColor=Color.MAGENTA;
+			border = new MetalBorders.ButtonBorder();
+			
 		}
 	};
 }
