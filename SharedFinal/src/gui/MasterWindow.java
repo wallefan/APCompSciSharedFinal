@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import javax.swing.JDialog;
 
@@ -14,13 +14,10 @@ public class MasterWindow {
 	}
 	public static void setView(View newView) {//make this better
 		if(view != null) {
-			view.hide();
+			mainWindow.remove(view.getView());
 		}
-		if(newView.getView().getParent()==null) {
-			mainWindow.add(newView.getView());
-		}
-		newView.show();
-		view = newView;
+		view=newView;
+		mainWindow.add(newView.getView());
 		mainWindow.pack();
 	}
 }

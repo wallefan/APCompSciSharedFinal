@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -11,18 +11,20 @@ public abstract class View {// TODO getters and setters I guess
 	 * main panel containing entire view
 	 */
 	private JPanel view;
+	
 	/**
 	 * header panel, used for title
 	 */
-	JPanel header;
+	protected JPanel header;
+	
 	/**
 	 * primary panel for content, put everything in here.
 	 */
-	JPanel content;
-	JPanel footer;
+	protected JPanel content;
+	protected JPanel footer;
+	protected JLabel title;
 	private BorderLayout layout;
-	String name;
-	JLabel title;
+	private String name;
 
 	View prev;
 	
@@ -62,16 +64,6 @@ public abstract class View {// TODO getters and setters I guess
 	 * Method executed once when the view is first constructed
 	 */
 	abstract void init();
-
-
-	void show() {
-		view.setVisible(true);
-	}
-
-
-	void hide() {
-		view.setVisible(false);
-	}
 
 	/**
 	 * @return - JPanel encompassing entire view

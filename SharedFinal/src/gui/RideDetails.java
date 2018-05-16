@@ -1,19 +1,16 @@
-package GUI;
+package gui;
 
 import park.Attraction;
 
 public class RideDetails extends View {
+	Attraction ride;
 	@Override
 	void init() {
 		
 	}
 	
-	public RideDetails(Attraction target) {
-		
-	}
-	
-	public void setRide(Attraction ride) {
+	public RideDetails(Attraction ride) {
+		this.ride=ride;
 		setName(ride.getName());
-		MasterWindow.mainWindow.pack();
 	}
 }

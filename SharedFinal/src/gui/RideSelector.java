@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import park.Attraction;
 
@@ -6,6 +6,7 @@ public class RideSelector extends View {
 	@Override
 	void init() {
 		setName("Ride Selection");
+		
 	}
 	
 	public void addRide(Attraction ride) {
