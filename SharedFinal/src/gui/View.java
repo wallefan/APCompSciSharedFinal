@@ -1,8 +1,10 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Font;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,7 +25,7 @@ public abstract class View {// TODO getters and setters I guess
 	 * primary panel for content, put everything in here.
 	 */
 	protected JPanel body;
-	protected JPanel footer;
+	private JPanel footer;
 	protected JLabel title;
 	private BorderLayout layout;
 	private String name;
@@ -41,6 +43,7 @@ public abstract class View {// TODO getters and setters I guess
 		Themes.title.style(title);
 		header.add(title);
 		footer = new JPanel();
+		footer.setLayout(new BorderLayout());
 		body = new JPanel();
 		// put other panels in view
 		view.add(header, BorderLayout.PAGE_START);// put header at the top of view
@@ -55,13 +58,15 @@ public abstract class View {// TODO getters and setters I guess
 	}
 	
 	public void setPrevView(View target) {
-		Button goBack = new Button("Back","") {
+		Button goBack = new Button("< Back","") {
 			@Override
 			void onClick() {
 				MasterWindow.setView(target);
 			}
 		};
-		footer.add(goBack.getButton());
+		JPanel backButtonPadding = new JPanel();
+		backButtonPadding.add(goBack.getButton());
+		footer.add(backButtonPadding,BorderLayout.WEST);
 	}
 
 	/**
