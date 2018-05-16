@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.Component;
+
 import javax.swing.BoxLayout;
 
 import park.Attraction;
@@ -20,6 +22,7 @@ public class RideSelector extends View {
 				MasterWindow.setView(thisRide);
 			}
 		};
+		button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 		body.add(button.getButton());
 	}
 }
