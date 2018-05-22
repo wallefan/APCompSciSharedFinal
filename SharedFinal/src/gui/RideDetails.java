@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import gui.theme.Themes;
 import park.Attraction;
+import park.Attraction.AttributeTypes;
 
 public class RideDetails extends View {
 	Attraction ride;
@@ -22,8 +23,8 @@ public class RideDetails extends View {
 		layout.setHgap(5);
 		Themes.body.style(attrs);
 		body.add(attrs);
-		for (Entry<String, Object> attr : ride.getAttributes().entrySet()) {
-			JLabel keylabel = new JLabel(attr.getKey());
+		for (Entry<AttributeTypes, Object> attr : ride.getAttributes().entrySet()) {
+			JLabel keylabel = new JLabel(attr.getKey().name().toLowerCase().replace("_"," "));
 			keylabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 			attrs.add(keylabel);
 			JLabel vallabel = new JLabel(attr.getValue().toString());
