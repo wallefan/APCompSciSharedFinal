@@ -6,22 +6,22 @@ import javax.swing.BoxLayout;
 
 import park.Attraction;
 
-public class RideSelector extends View {
-	@Override
-	void init() {
-		setName("Select Ride");
-		body.setLayout(new BoxLayout(body,BoxLayout.Y_AXIS));
+public class RideSelector{
+	View view;
+	public RideSelector(){
+		view = new View();
+		view.setName("Select Ride");
+		view.body.setLayout(new BoxLayout(view.body,BoxLayout.Y_AXIS));
 	}
 	
 	public void addRide(Attraction ride) {
-		RideDetails detailsPane = new RideDetails(ride);
 		Button button = new Button(ride.getName(),"") {
 			@Override
 			void onClick() {
-				switchView(detailsPane);
+				MasterWindow.setView(RideSelector.this.view);
 			}
 		};
 		button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
-		body.add(button.getButton());
+		view.body.add(button.getButton());
 	}
 }
