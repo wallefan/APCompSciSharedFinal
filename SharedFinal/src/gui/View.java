@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import gui.theme.Themes;
 
-public abstract class View {// TODO getters and setters I guess
+public class View {// TODO getters and setters I guess
 	/**
 	 * main panel containing entire view
 	 */
@@ -49,7 +49,6 @@ public abstract class View {// TODO getters and setters I guess
 		view.add(header, BorderLayout.PAGE_START);// put header at the top of view
 		view.add(body, BorderLayout.CENTER);// put content in the middle of view
 		view.add(footer,BorderLayout.PAGE_END);// put footer at bottom of view
-		init();
 	}
 
 	public void setName(String name) {
@@ -68,21 +67,10 @@ public abstract class View {// TODO getters and setters I guess
 		backButtonPadding.add(goBack.getButton());
 		footer.add(backButtonPadding,BorderLayout.WEST);
 	}
-
-	/**
-	 * Method executed once when the view is first constructed
-	 */
-	abstract void init();
-
 	/**
 	 * @return - JPanel encompassing entire view
 	 */
 	public JPanel getView() {
 		return view;
-	}
-	
-	protected void switchView(View nextView) {
-		nextView.setPrevView(this);
-		MasterWindow.setView(nextView);
 	}
 }
