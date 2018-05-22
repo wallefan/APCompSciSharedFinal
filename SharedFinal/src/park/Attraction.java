@@ -5,7 +5,11 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class Attraction {
-	private final Map<String, Object> attributes;
+	public enum AttributeTypes{
+		NUMBER_OF_RIDERS,
+		TICKET_PRICE;
+	}
+	private final Map<AttributeTypes, Object> attributes;
 	 //public final int maxRiders;
 	 //public final double rideDuration;
 	 //public final int maxConcurrentRides;
@@ -16,7 +20,7 @@ public class Attraction {
 	 //public final double thrillRating;
 	 public final String name;
 	 private double ridesToday = 0;
-	 public Attraction(String name, Map<String, Object> attributes){
+	 public Attraction(String name, Map<AttributeTypes, Object> attributes){
 		this.name=name;
 		this.attributes = Collections.unmodifiableMap(attributes);
 	 }
@@ -24,7 +28,7 @@ public class Attraction {
 		 return this.name;
 	 }
 	 
-	 public Map<String, Object> getAttributes() {
+	 public Map<AttributeTypes, Object> getAttributes() {
 		 return attributes;
 	 }
 }
