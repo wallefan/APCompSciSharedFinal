@@ -14,12 +14,11 @@ public class RideSelector extends View {
 	}
 	
 	public void addRide(Attraction ride) {
+		RideDetails detailsPane = new RideDetails(ride);
 		Button button = new Button(ride.getName(),"") {
 			@Override
 			void onClick() {
-				RideDetails thisRide = new RideDetails(ride);
-				thisRide.setPrevView(RideSelector.this);
-				MasterWindow.setView(thisRide);
+				switchView(detailsPane);
 			}
 		};
 		button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
