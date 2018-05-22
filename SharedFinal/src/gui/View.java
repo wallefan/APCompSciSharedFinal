@@ -80,4 +80,9 @@ public abstract class View {// TODO getters and setters I guess
 	public JPanel getView() {
 		return view;
 	}
+	
+	protected void switchView(View nextView) {
+		nextView.setPrevView(this);
+		MasterWindow.setView(nextView);
+	}
 }
