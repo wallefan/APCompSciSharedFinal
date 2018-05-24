@@ -16,14 +16,7 @@ public class Attraction {
 	// private final Properties properties;
 	private final HashMap<AttributeTypes, Object> attributes = new HashMap<AttributeTypes, Object>();;
 
-	public enum AttributeTypes {
-		NUMBER_OF_RIDERS(0), TICKET_PRICE(0.0);
-		Object defaultVal;
 
-		AttributeTypes(Object defaultVal) {
-			this.defaultVal = defaultVal;
-		}
-	}
 
 	// private final Map<AttributeTypes, Object> attributes;
 	// public final int maxRiders;
