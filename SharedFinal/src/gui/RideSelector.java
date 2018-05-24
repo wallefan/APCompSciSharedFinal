@@ -21,6 +21,7 @@ public class RideSelector implements GuiPanel{
 	
 	public void addRide(Attraction ride) {
 		RideDetails rd = new RideDetails(ride);
+		rd.getView().setPrevView(view);
 		Button button = new Button(ride.getName(),"") {
 			@Override
 			void onClick() {
