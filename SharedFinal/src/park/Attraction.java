@@ -4,19 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import javax.swing.text.html.parser.Entity;
-
 public class Attraction {
-	// private final Properties properties;
-	private final HashMap<AttributeTypes, Object> attributes = new HashMap<AttributeTypes, Object>();;
-
-
+	private final EnumMap<AttributeTypes, Object> attributes = new EnumMap<>(AttributeTypes.class);
 
 	// private final Map<AttributeTypes, Object> attributes;
 	// public final int maxRiders;
@@ -52,7 +46,7 @@ public class Attraction {
 		return this.name;
 	}
 
-	public HashMap<AttributeTypes, Object> getAttributes() {
+	public Map<AttributeTypes, Object> getAttributes() {
 		return attributes;
 	}
 
@@ -87,7 +81,7 @@ public class Attraction {
 		// value, the call will fail." WHY ISN'T IT A HashMap<String, String> THEN!?
 		// It would be so easy to avoid this whole problem! Programming languages don't
 		// NEED bureaucracy!
-		
+
 		// Oh well...
 
 		attributes.forEach((AttributeTypes k, Object v) -> p.setProperty(k.toString(), v.toString()));
@@ -107,9 +101,7 @@ public class Attraction {
 			else if (k instanceof String)
 				attributes.put(AttributeTypes.valueOf((String) k), v);
 			else
-				throw new Error("Key types must be either AttributeTypes or Strings representing them");
+				throw new ClassCastException("Key types must be either AttributeTypes or Strings representing them");
 		});
-
 	}
-
 }
