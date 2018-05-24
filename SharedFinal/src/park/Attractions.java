@@ -1,7 +1,6 @@
 package park;
 
 import java.util.ArrayList;
-import park.Attraction.AttributeTypes;
 
 public class Attractions {
 	static ArrayList<Attraction> attractions = new ArrayList<Attraction>();

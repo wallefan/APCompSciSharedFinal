@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import gui.theme.Themes;
 import park.Attraction;
-import park.Attraction.AttributeTypes;
+import park.AttributeTypes;
 
 public class RideDetails implements GuiPanel{
 	private View view;
