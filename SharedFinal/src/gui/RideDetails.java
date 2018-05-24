@@ -11,8 +11,8 @@ import gui.theme.Themes;
 import park.Attraction;
 import park.Attraction.AttributeTypes;
 
-public class RideDetails {
-	View view;
+public class RideDetails implements GuiPanel{
+	private View view;
 	Attraction ride;
 
 	public RideDetails(Attraction ride) {
@@ -33,5 +33,10 @@ public class RideDetails {
 			attrs.add(vallabel);
 			Themes.body.style(keylabel, vallabel);
 		}
+	}
+
+	@Override
+	public View getView() {
+		return view;
 	}
 }
