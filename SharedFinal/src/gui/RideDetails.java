@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.Map.Entry;
@@ -38,6 +39,7 @@ public class RideDetails implements GuiPanel {
 //			attrs.add(vallabel);
 			if (attr.getKey().defaultVal instanceof Number) {
 				JTextField keyField = new JTextField();
+				Themes.input.style(keyField);
 				keyField.setText(attr.getValue().toString());
 				keyField.getDocument().addDocumentListener(new DocumentListener() {
 					Class<? extends Object> numtype = attr.getKey().defaultVal.getClass();
@@ -64,8 +66,9 @@ public class RideDetails implements GuiPanel {
 							} else if (numtype == Double.class) {
 								attr.setValue(Double.parseDouble(keyField.getText()));
 							}
+							Themes.input.style(keyField);
 						} catch (NumberFormatException e) {
-							System.err.println("a");
+							keyField.setForeground(Color.red);
 						}
 					}
 				});

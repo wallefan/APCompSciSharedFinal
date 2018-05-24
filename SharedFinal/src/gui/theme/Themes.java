@@ -1,5 +1,7 @@
 package gui.theme;
 
+import java.awt.Color;
+
 import javax.swing.plaf.metal.MetalBorders;
 
 public class Themes {
@@ -28,5 +30,13 @@ public class Themes {
 		void jank() {
 			border=new MetalBorders.TextFieldBorder();
 		}
+	};
+	public static Theme badInput = new Theme(input) {
+
+		@Override
+		void jank() {
+			backgroundColor=Color.red;
+		}
+		
 	};
 }
