@@ -20,4 +20,7 @@ public class MasterWindow {
 		mainWindow.add(newView.getView());
 		mainWindow.pack();
 	}
+	public static void setView(GuiPanel newView) {
+		setView(newView.getView());
+	}
 }
