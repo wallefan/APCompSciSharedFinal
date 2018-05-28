@@ -3,13 +3,15 @@ package gui;
 import java.util.HashMap;
 
 import park.Attraction;
+import park.Attractions;
 
 public class GUITester {
 	public static void main(String[] args) {
-		Attraction a = new Attraction("A");
 		MasterWindow.initGUI();
 		RideSelector r = new RideSelector();
-		r.addRide(a);
+		for(Attraction a:Attractions.attractions) {
+			r.addRide(a);
+		}
 		MasterWindow.setView(r);
 	}
 }

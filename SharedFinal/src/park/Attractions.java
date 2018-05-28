@@ -3,7 +3,7 @@ package park;
 import java.util.ArrayList;
 
 public class Attractions {
-	static ArrayList<Attraction> attractions = new ArrayList<Attraction>();
+	public static ArrayList<Attraction> attractions = new ArrayList<Attraction>();
 	static Attraction wheel = new Attraction("Ferris Wheel");
 	static Attraction merryGoRound = new Attraction("Merry Go Round");
 	static Attraction coaster = new Attraction("Roller Coaster");
