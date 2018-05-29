@@ -28,8 +28,6 @@ public class View {// TODO getters and setters I guess
 	private JPanel footer;
 	protected JLabel title;
 	private BorderLayout layout;
-	private String name;
-
 	View prev;
 	
 	View() {
@@ -39,9 +37,6 @@ public class View {// TODO getters and setters I guess
 		view.setLayout(layout);
 		// setup other panels
 		header = new JPanel();
-		title = new JLabel();
-		Themes.title.style(title);
-		header.add(title);
 		footer = new JPanel();
 		footer.setLayout(new BorderLayout());
 		body = new JPanel();
@@ -52,7 +47,11 @@ public class View {// TODO getters and setters I guess
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if(title==null) {
+			title = new JLabel();
+			Themes.title.style(title);
+			header.add(title);
+		}
 		title.setText(name);
 	}
 	

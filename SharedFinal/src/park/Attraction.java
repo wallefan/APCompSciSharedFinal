@@ -5,12 +5,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.function.Consumer;
 
-public class Attraction {
+import nc.NameChangeable;
+
+public class Attraction extends NameChangeable {
 	private final EnumMap<AttributeTypes, Object> attributes = new EnumMap<>(AttributeTypes.class);
 
 	// private final Map<AttributeTypes, Object> attributes;
@@ -22,18 +26,17 @@ public class Attraction {
 	// public final double minRiderHeight;
 	// public final double maxRiderWeight;
 	// public final double thrillRating;
-	public final String name;
 	private double ridesToday = 0;
 
 	public Attraction(String name) {
-		this.name = name;
+		setName(name);
 		for (AttributeTypes attr : AttributeTypes.values()) {
 			attributes.put(attr, attr.defaultVal);
 		}
 	}
 
 	public Attraction(String name, File file) throws IOException {
-		this.name = name;
+		setName(name);
 		Properties properties = new Properties();
 		try (FileInputStream fin = new FileInputStream(file)) {
 			properties.load(fin);
@@ -42,11 +45,7 @@ public class Attraction {
 			attributes.put((AttributeTypes) entry.getKey(), entry.getValue());
 		}
 	}
-
-	public String getName() {
-		return this.name;
-	}
-
+	
 	public Map<AttributeTypes, Object> getAttributes() {
 		return attributes;
 	}
@@ -86,7 +85,7 @@ public class Attraction {
 		// Oh well...
 
 		attributes.forEach((AttributeTypes k, Object v) -> p.setProperty(k.toString(), v.toString()));
-		p.store(fout, "Auto-generated config file for " + name);
+		p.store(fout, "Auto-generated config file for " + getName());
 	}
 
 	void loadFromFile(InputStream fin) throws IOException {

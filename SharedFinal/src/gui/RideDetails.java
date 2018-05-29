@@ -17,13 +17,18 @@ import park.Attraction;
 import park.AttributeTypes;
 
 public class RideDetails implements GuiPanel {
-	private View view;
+	private NameChangeableView view;
 	Attraction ride;
 
 	public RideDetails(Attraction ride) {
-		view = new View();
+		view = new NameChangeableView();
 		this.ride = ride;
 		view.setName(ride.getName());
+		System.out.println("done setting name");
+		ride.addNameChangeListener(view::setName);
+		view.addNameChangeListener(ride::setName); // ordinarily configuring two objects to listen to each other like
+													// this would mean infinite recursion but NameChangeableView has
+													// measures to prevent that
 		JPanel attrs = new JPanel();
 		GridLayout layout = new GridLayout(ride.getAttributes().size(), 2);
 		attrs.setLayout(layout);
@@ -42,8 +47,8 @@ public class RideDetails implements GuiPanel {
 			JLabel keylabel = new JLabel(name);
 			keylabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 			attrs.add(keylabel);
-//			JLabel vallabel = new JLabel(attr.getValue().toString());
-//			attrs.add(vallabel);
+			// JLabel vallabel = new JLabel(attr.getValue().toString());
+			// attrs.add(vallabel);
 			if (attr.getKey().defaultVal instanceof Number) {
 				JTextField keyField = new JTextField();
 				Themes.input.style(keyField);
@@ -80,8 +85,7 @@ public class RideDetails implements GuiPanel {
 					}
 				});
 				attrs.add(keyField);
-			}
-			else {
+			} else {
 				JLabel vallabel = new JLabel(attr.getValue().toString());
 				attrs.add(vallabel);
 			}

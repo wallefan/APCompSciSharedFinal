@@ -30,6 +30,7 @@ public class RideSelector implements GuiPanel{
 		};
 		button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 		view.body.add(button.getButton());
+		ride.addNameChangeListener(button.getButton()::setText);
 	}
 
 	
