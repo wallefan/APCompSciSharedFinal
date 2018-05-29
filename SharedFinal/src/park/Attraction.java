@@ -91,6 +91,7 @@ public class Attraction {
 
 	void loadFromFile(InputStream fin) throws IOException {
 		Properties p = new Properties();
+		p.load(fin);
 		p.forEach((Object k, Object v) -> {
 			if (k instanceof AttributeTypes)
 				attributes.put((AttributeTypes) k, v);

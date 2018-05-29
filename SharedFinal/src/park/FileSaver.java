@@ -17,8 +17,13 @@ public class FileSaver implements WindowListener {
 	public void windowOpened(WindowEvent e) {
 		try (ZipInputStream zf = new ZipInputStream(new FileInputStream("attractions.zip"))) {
 			ZipEntry entry;
-			while((entry = zf.getNextEntry()) != null) {
-				Attraction ride = new Attraction(entry.getName());
+			while ((entry = zf.getNextEntry()) != null) {
+				if (entry.isDirectory())
+					continue;
+				String name = entry.getName();
+				if (!name.endsWith(".properties"))
+					continue;
+				Attraction ride = new Attraction(name.substring(0, name.length() - 11)); // 11 is the length of the string ".properties"
 				ride.loadFromFile(zf);
 				Attractions.attractions.add(ride);
 				zf.closeEntry();
@@ -35,7 +40,7 @@ public class FileSaver implements WindowListener {
 	public void windowClosing(WindowEvent e) {
 		try (ZipOutputStream zf = new ZipOutputStream(new FileOutputStream("attractions.zip"))) {
 			for (Attraction ride : Attractions.attractions) {
-				zf.putNextEntry(new ZipEntry(ride.getName()+".properties"));
+				zf.putNextEntry(new ZipEntry(ride.getName() + ".properties"));
 				ride.saveToFile(zf);
 				zf.closeEntry();
 			}
