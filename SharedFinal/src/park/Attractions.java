@@ -7,7 +7,7 @@ public class Attractions {
 	static Attraction wheel = new Attraction("Ferris Wheel");
 	static Attraction merryGoRound = new Attraction("Merry Go Round");
 	static Attraction coaster = new Attraction("Roller Coaster");
-	static {
+	static void loadDefaults() {
 		attractions.add(wheel);
 		wheel.setAttribute(AttributeTypes.OPENING_TIME, 10.0);
 		wheel.setAttribute(AttributeTypes.CLOSING_TIME, 18.0);

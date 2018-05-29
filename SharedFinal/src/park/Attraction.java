@@ -2,8 +2,9 @@ package park;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -68,7 +69,7 @@ public class Attraction {
 		attributes.put(attribute, newValue);
 	}
 
-	void saveToFile(File f) throws IOException {
+	void saveToFile(OutputStream fout) throws IOException {
 		Properties p = new Properties();
 		// you ever just been reading the docs and decided you really, really hate Java?
 
@@ -85,16 +86,11 @@ public class Attraction {
 		// Oh well...
 
 		attributes.forEach((AttributeTypes k, Object v) -> p.setProperty(k.toString(), v.toString()));
-		try (FileOutputStream fout = new FileOutputStream(f)) {
-			p.store(fout, name);
-		}
+		p.store(fout, "Auto-generated config file for " + name);
 	}
 
-	void loadFromFile(File f) throws IOException {
+	void loadFromFile(InputStream fin) throws IOException {
 		Properties p = new Properties();
-		try (FileInputStream fin = new FileInputStream(f)) {
-			p.load(fin);
-		}
 		p.forEach((Object k, Object v) -> {
 			if (k instanceof AttributeTypes)
 				attributes.put((AttributeTypes) k, v);

@@ -2,6 +2,8 @@ package gui;
 
 import javax.swing.JDialog;
 
+import park.FileSaver;
+
 public class MasterWindow {
 	static JDialog mainWindow;
 	static View view;
@@ -11,6 +13,7 @@ public class MasterWindow {
 		mainWindow.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		mainWindow.pack();
 		mainWindow.setVisible(true);
+		mainWindow.addWindowListener(new FileSaver());
 	}
 	public static void setView(View newView) {//make this better
 		if(view != null) {
