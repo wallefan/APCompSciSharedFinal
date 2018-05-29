@@ -31,10 +31,17 @@ public class RideDetails implements GuiPanel {
 		Themes.body.style(attrs);
 		view.body.add(attrs);
 		for (Entry<AttributeTypes, Object> attr : ride.getAttributes().entrySet()) {
-			 JLabel keylabel = new JLabel(attr.getKey().name().toLowerCase().replace("_",
-			 " "));
-			 keylabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-			 attrs.add(keylabel);
+			String name = "";
+			for (String word : attr.getKey().name().split("_")) {
+				name += word.substring(0, 1);
+				if (word.length() > 1) {
+					name += word.substring(1).toLowerCase();
+				}
+				name += " ";
+			}
+			JLabel keylabel = new JLabel(name);
+			keylabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+			attrs.add(keylabel);
 //			JLabel vallabel = new JLabel(attr.getValue().toString());
 //			attrs.add(vallabel);
 			if (attr.getKey().defaultVal instanceof Number) {
