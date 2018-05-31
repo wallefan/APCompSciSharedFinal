@@ -14,6 +14,15 @@ public class RideSelector implements GuiPanel{
 		view = new View();
 		view.setName("Select Ride");
 		view.body.setLayout(new BoxLayout(view.body,BoxLayout.Y_AXIS));
+		Button newButton = new Button("New","") {
+
+			@Override
+			void onClick() {
+				addRide(new Attraction("New Attraction"));
+			}};
+		newButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+		newButton.getButton().setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		view.body.add(newButton.getButton());
 	}
 	
 	@Override
